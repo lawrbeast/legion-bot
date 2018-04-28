@@ -28,9 +28,7 @@ bot.on("message", async message => {
         .addField("Emojis:", `[${message.guild.emojis.size}]`)
         .addField("Canale:", `[${message.guild.channels.size}]`, true)
         .addField("Regiune:", message.guild.region, true)
-        .addField("Server Owner:", `👑${message.guild.owner}👑`)
-        .setFooter(`${message.guild.name}`, message.guild.iconURL)
-        .setTitle(`♦${message.guild.name}♦`, message.guild.iconURL);
+        .addField("Server Owner:", `${message.guild.owner}`);
 
         return message.channel.send(serverembed);
     }

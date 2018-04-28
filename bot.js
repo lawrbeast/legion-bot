@@ -6,7 +6,7 @@ bot.on('guildMemberAdd', function(member) {
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
-    bot.user.setPresence({ game: { name: 'discord.io/legione', type: 1 } });
+    bot.user.setPresence({ stream: { name: 'discord.io/legione', type: 1 } });
 });
   
 bot.login(process.env.BOT_TOKEN);

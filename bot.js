@@ -22,8 +22,7 @@ if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;
     const embed = new Discord.RichEmbed()
         .setColor(0xffffff) // This will set the embed sidebar color
-        .setTitle(user.username) // This will set the embed title
-        .setImage(user.avatarURL({size: 2048})) // This will set the embed image     
+        .setImage(user.avatarURL) // This will set the embed image     
     message.channel.send({embed});
         return;
     }

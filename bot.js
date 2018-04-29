@@ -17,7 +17,17 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let sender = message.author;
     let args = messageArray.slice(1);
-   
+	
+if(cmd === `${prefix}avatar`){
+    let user = message.mentions.users.first() || message.author;
+    const server = new Discord.RichEmbed()
+        .setColor(0xffffff) // This will set the embed sidebar color
+        .setTitle(user.username) // This will set the embed title
+        .setImage(user.avatarURL); // This will set the embed image     
+    message.channel.send(server);
+        return;
+    }
+   //
   if(cmd === `${prefix}userinfo`){
 	let user;
 	// If the user mentions someone, display their stats. If they just run userinfo without mentions, it will show their own stats.
@@ -45,16 +55,6 @@ bot.on("message", message => {
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
 	  return;
-    }
-	//AVATAR
-  if(cmd === `${prefix}avatar`){
-    let user = message.mentions.users.first() || message.author;
-    const server = new Discord.RichEmbed()
-        .setColor(0xffffff) // This will set the embed sidebar color
-        .setTitle(user.username) // This will set the embed title
-        .setImage(user.avatarURL); // This will set the embed image     
-    message.channel.send({ server });
-        return;
     }
   });
   

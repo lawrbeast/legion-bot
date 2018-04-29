@@ -49,7 +49,7 @@ bot.on("message", async message => {
   if(cmd === `${prefix}serverinfo`){
 
         let sicon = message.guild.iconURL;
-        let serverembed = new Discord.RichEmbed()
+        const serverembed = new Discord.RichEmbed()
         .setColor("#0d1d38")
         .setThumbnail(sicon)
         .addField("ID:", message.guild.id)

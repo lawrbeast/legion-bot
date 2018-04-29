@@ -47,22 +47,18 @@ bot.on("message", message => {
      message.channel.send({embed});
 	  return;
     }
-  if(cmd === `${prefix}serverinfo`){
-
-        let sicon = message.guild.iconURL;
-        const serverembed = new Discord.RichEmbed()
-        .setColor("#0d1d38")
-        .setThumbnail(sicon)
-        .addField("ID:", message.guild.id)
-        .addField("Membrii", `[${message.guild.memberCount}]`, true)
-        .addField("Roluri:", `[${message.guild.roles.size}]`, true)
-        .addField("Emojis:", `[${message.guild.emojis.size}]`)
-        .addField("Canale:", `[${message.guild.channels.size}]`, true)
-        .addField("Regiune:", message.guild.region, true)
-        .addField("Server Owner:", `👑${message.guild.owner}👑`)
-        .setFooter(`${message.guild.name}`, message.guild.iconURL)
-        .setTitle(`♦${message.guild.name}♦`, message.guild.iconURL);
-	message.channel.send({serverembed});
+  if(cmd === `${prefix}avatar`){
+	    // Define user, if nobody is mentioned it will store author
+    let user = message.mentions.users.first() || message.author;
+    
+    // Form Embed
+    const embed = new Discord.MessageEmbed()
+        .setColor(0xffffff) // This will set the embed sidebar color
+        .setTitle(user.username) // This will set the embed title
+        .setImage(user.avatarURL({size: 2048})) // This will set the embed image
+        
+    // Send Message
+    message.channel.send(embed)
         return;
     }
   });

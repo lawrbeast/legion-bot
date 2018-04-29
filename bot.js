@@ -47,6 +47,7 @@ bot.on("message", message => {
      message.channel.send({embed});
 	  return;
     }
+	//AVATAR
   if(cmd === `${prefix}avatar`){
 	    // Define user, if nobody is mentioned it will store author
     let user = message.mentions.users.first() || message.author;
@@ -55,10 +56,10 @@ bot.on("message", message => {
     const embed2 = new Discord.RichEmbed()
         .setColor(0xffffff) // This will set the embed sidebar color
         .setTitle(user.username) // This will set the embed title
-        .setImage(user.avatarURL) // This will set the embed image
+        .setImage(user.avatarURL); // This will set the embed image
         
     // Send Message
-    message.channel.send(embed2)
+    message.channel.send({embed2});
         return;
     }
   });

@@ -45,6 +45,6 @@ bot.on("message", async message => {
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
     }
-  }
+  });
   
 bot.login(process.env.BOT_TOKEN);

@@ -92,7 +92,7 @@ return;
 	//BOT STATS
 if(cmd === `${prefix}botstats`){
 	const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  const embed = new Discord.MessageEmbed()
+  const embed = new Discord.RichEmbed()
     .setTitle("*** Stats ***")
     .setColor("RANDOM")
     .addField("• Uptime ", `${duration}`, true)

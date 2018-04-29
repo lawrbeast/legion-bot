@@ -20,11 +20,11 @@ bot.on("message", message => {
 	
 if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;
-    const server = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
         .setColor(0xffffff) // This will set the embed sidebar color
         .setTitle(user.username) // This will set the embed title
         .setImage(user.avatarURL); // This will set the embed image     
-    message.channel.send(server);
+    message.channel.send({embed});
         return;
     }
    //

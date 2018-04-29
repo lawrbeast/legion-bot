@@ -59,7 +59,7 @@ if(cmd === `${prefix}avatar`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
 		.setDescription("$userinfo - Iti arata informatiile unui membru\n$avatar [@Legion Guard] - Iti arata avatarul tau sau al unui membru")
-		.setFooter("Version 0.0.1 - PreAlpha)
+		.setFooter("Version 0.0.1 - PreAlpha")
 		message.author.send({embed})
 		return;
 	}

@@ -8,7 +8,7 @@ bot.on('guildMemberAdd', function(member) {
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
-    bot.user.setPresence({ game: { name: `Prefix: $`, url: 'https://twitch.tv/qlau234', type: 1 } });
+    bot.user.setPresence({ game: { name: `Prefix: $help`, url: 'https://twitch.tv/qlau234', type: 1 } });
 });
 bot.on("message", message => {
   if(message.channel.type === "dm") return

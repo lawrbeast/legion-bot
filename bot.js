@@ -9,7 +9,7 @@ bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
     bot.user.setPresence({ stream: { name: 'discord.io/legione', type: 1 } });
 });
-bot.on("message", async message => {
+bot.on("message", message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return
 

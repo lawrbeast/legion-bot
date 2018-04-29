@@ -46,12 +46,14 @@ bot.on("message", async message => {
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
     }
-if(cmd === `${prefix}serverinfo`){
-	  let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
-  let day = message.guild.createdAt.getDate()
-  let month = 1 + message.guild.createdAt.getMonth()
-  let year = message.guild.createdAt.getFullYear()
-   let sicon = message.guild.iconURL;
+if(cmd === `${prefix}serverinfo`)
+let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
+let day = message.guild.createdAt.getDate()
+let humans = message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size
+let bots = message.guild.members.filter(m => m.user.bot).size
+let month = 1 + message.guild.createdAt.getMonth()
+let year = message.guild.createdAt.getFullYear()
+let sicon = message.guild.iconURL;
    let serverembed = new Discord.RichEmbed()
    .setAuthor(message.guild.name, sicon)
    .setFooter(`Server creat • ${day}.${month}.${year}`)
@@ -63,8 +65,8 @@ if(cmd === `${prefix}serverinfo`){
    .addField("Regiune", message.guild.region, true)
    .addField("Canale", message.guild.channels.size, true)
    .addField("Membrii", message.guild.memberCount, true)
-   .addField("Umani", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("Boti", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Umani", humans, true)
+   .addField("Boti", bots, true)
    .addField("Online", online.size, true)
    .addField("Roluri", message.guild.roles.size, true);
    message.channel.send(serverembed);

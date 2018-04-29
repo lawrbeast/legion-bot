@@ -100,8 +100,6 @@ if(cmd === `${prefix}botstats`){
     .addField("• Users", `${bot.users.size.toLocaleString()}`, true)
     .addField("• Servers", `${bot.guilds.size.toLocaleString()}`, true)
     .addField("• Channels ", `${bot.channels.size.toLocaleString()}`, true)
-    .addField("• Discord.js", `v${version}`, true)
-    .addField("• Node", `${process.version}`, true)
     message.channel.send({embed})
 	return;
 }

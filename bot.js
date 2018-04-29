@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const moment = require('moment');
+require("moment-duration-format");
 const bot = new Discord.Client();
 
 bot.on('guildMemberAdd', function(member) {

@@ -105,7 +105,7 @@ if(cmd === `${prefix}botstats`){
 	return;
 }
 	//PURGE COMMAND
-if(cmd === `${prefix}purge`{
+if(cmd === `${prefix}purge`){
   if (isNaN(args[0])) return message.channel.send('**Please supply a valid amount of messages to purge**');
   if (args[0] > 100) return message.channel.send('**Please supply a number less than 100**');
 

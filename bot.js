@@ -45,6 +45,7 @@ bot.on("message", message => {
 		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
+	  return;
     }
   if(cmd === `${prefix}serverinfo`){
 
@@ -61,8 +62,8 @@ bot.on("message", message => {
         .addField("Server Owner:", `👑${message.guild.owner}👑`)
         .setFooter(`${message.guild.name}`, message.guild.iconURL)
         .setTitle(`♦${message.guild.name}♦`, message.guild.iconURL);
-
-        return message.channel.send({serverembed});
+	message.channel.send({serverembed});
+        return;
     }
   });
   

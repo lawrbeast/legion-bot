@@ -89,6 +89,21 @@ if(cmd === `${prefix}serverinfo`){
    message.channel.send({embed});
 return;
 }
+	//BOT STATS
+if(cmd === `${prefix}botstats`){
+	const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+  const embed = new Discord.MessageEmbed()
+    .setTitle("*** Stats ***")
+    .setColor("RANDOM")
+    .addField("• Uptime ", `${duration}`, true)
+    .addField("• Users", `${bot.users.size.toLocaleString()}`, true)
+    .addField("• Servers", `${bot.guilds.size.toLocaleString()}`, true)
+    .addField("• Channels ", `${bot.channels.size.toLocaleString()}`, true)
+    .addField("• Discord.js", `v${version}`, true)
+    .addField("• Node", `${process.version}`, true)
+    message.channel.send({embed})
+	return;
+}
   });
   
 bot.login(process.env.BOT_TOKEN);

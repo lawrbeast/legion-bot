@@ -60,7 +60,8 @@ if(cmd === `${prefix}avatar`){
 	if(cmd === `${prefix}help`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
-		.setDescription("$userinfo - Iti arata informatiile unui membru\n$avatar [@Legion Guard] - Iti arata avatarul tau sau al unui membru\n$serverinfo - Iti arata informatiile server-ului.")
+		.setTitle("Legion's Commands")
+		.setDescription("$userinfo - Iti arata informatiile unui membru\n$avatar [@Legion Guard] - Iti arata avatarul tau sau al unui membru\n$serverinfo - Iti arata informatiile server-ului.\n$botstats - Iti arata informatiile bot-ului.")
 		.setFooter("Version 0.0.1 - PreAlpha")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
@@ -103,7 +104,17 @@ if(cmd === `${prefix}botstats`){
     message.channel.send({embed})
 	return;
 }
-	//SPOTIFY
+	//PURGE COMMAND
+if(cmd === `${prefix}purge`{
+  if (isNaN(args[0])) return message.channel.send('**Please supply a valid amount of messages to purge**');
+  if (args[0] > 100) return message.channel.send('**Please supply a number less than 100**');
+
+  message.channel.bulkDelete(args[0])
+    .then(messages => message.channel.send(`:white_check_mark: Succes!`).then(msg => msg.delete({
+      timeout: 10000
+    }))) // This sends how many messages they deleted to chat, we also want to delete this message. This deletes the message after 10000 milliseconds.
+   
+   }
   });
   
 bot.login(process.env.BOT_TOKEN);

@@ -52,13 +52,13 @@ bot.on("message", message => {
     let user = message.mentions.users.first() || message.author;
     
     // Form Embed
-    const embed = new Discord.MessageEmbed()
+    const embed2 = new Discord.RichEmbed()
         .setColor(0xffffff) // This will set the embed sidebar color
         .setTitle(user.username) // This will set the embed title
-        .setImage(user.avatarURL({size: 2048})) // This will set the embed image
+        .setImage(user.avatarURL) // This will set the embed image
         
     // Send Message
-    message.channel.send(embed)
+    message.channel.send(embed2)
         return;
     }
   });

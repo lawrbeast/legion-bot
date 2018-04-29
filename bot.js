@@ -46,10 +46,10 @@ bot.on("message", async message => {
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
     }
-if(cmd === `${prefix}serverinfo`)
+if(cmd === `${prefix}serverinfo`){
 let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
-let day = message.guild.createdAt.getDate()
-let humans = message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size
+let day = message.guild.createdAt.getDate();
+let humans = message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size;
 let bots = message.guild.members.filter(m => m.user.bot).size
 let month = 1 + message.guild.createdAt.getMonth()
 let year = message.guild.createdAt.getFullYear()

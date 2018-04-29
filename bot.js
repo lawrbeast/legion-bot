@@ -62,7 +62,7 @@ if(cmd === `${prefix}avatar`){
 		.setColor("#fcfdff")
 		.setDescription("$userinfo - Iti arata informatiile unui membru\n$avatar [@Legion Guard] - Iti arata avatarul tau sau al unui membru\n$serverinfo - Iti arata informatiile server-ului.")
 		.setFooter("Version 0.0.1 - PreAlpha")
-		message.author.send({embed})
+		message.author.send({embed}).then(msg => (message.channel.send("Ti-am trimis comenzile in DM!"))
 		return;
 	}
 	//SERVERINFO

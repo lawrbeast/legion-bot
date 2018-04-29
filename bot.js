@@ -91,7 +91,7 @@ return;
 }
 	//BOT STATS
 if(cmd === `${prefix}botstats`){
-	const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
+	const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
   const embed = new Discord.MessageEmbed()
     .setTitle("*** Stats ***")
     .setColor("RANDOM")

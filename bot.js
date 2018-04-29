@@ -10,7 +10,6 @@ bot.on("ready", async () => {
     bot.user.setPresence({ stream: { name: 'discord.io/legione', type: 1 } });
 });
 bot.on("message", message => {
-  if(message.author.bot) return;
   if(message.channel.type === "dm") return
 
     const prefix = "$";

@@ -107,11 +107,10 @@ if(cmd === `${prefix}botstats`){
 	//PURGE COMMAND
 if(cmd === `${prefix}purge`){
   if (isNaN(args[0])) return message.channel.send('**Te rog sa introduci un numar de mesaje.**');
-  if (args[0] > 500) return message.channel.send('**Numarul de mesaje trebuie sa fie mai mic de 500!**');
+  if (args[0] > 100) return message.channel.send('**Numarul de mesaje trebuie sa fie mai mic de 100!**');
 
   message.channel.bulkDelete(args[0])
-    .then(messages => message.channel.send(`:white_check_mark: Succes!`).then(msg => msg.delete({
-      timeout: 35000
+    .then(messages => message.channel.send(`:white_check_mark: Succes!`).then(msg => msg.delete({3500}) 
     }))) // This sends how many messages they deleted to chat, we also want to delete this message. This deletes the message after 10000 milliseconds.
    
    }

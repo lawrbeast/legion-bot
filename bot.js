@@ -58,7 +58,7 @@ bot.on("message", message => {
         .setImage(user.avatarURL); // This will set the embed image
         
     // Send Message
-    message.channel.send({embed2});
+    message.channel.send({ embed2} );
         return;
     }
   });

@@ -55,6 +55,7 @@ if(cmd === `${prefix}avatar`){
      message.channel.send({embed});
 	  return;
     }
+	//HEP
 	if(cmd === `${prefix}help`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
@@ -63,6 +64,31 @@ if(cmd === `${prefix}avatar`){
 		message.author.send({embed})
 		return;
 	}
+	//SERVERINFO
+if(cmd === `${prefix}serverinfo){
+   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
+   let day = message.guild.createdAt.getDate()
+   let month = 1 + message.guild.createdAt.getMonth()
+   let year = message.guild.createdAt.getFullYear()
+   let sicon = message.guild.iconURL;
+   let embed = new Discord.RichEmbed()
+   .setAuthor(message.guild.name, sicon)
+   .setFooter(`Server Creat • ${day}.${month}.${year}`)
+   .setColor("#7289DA")
+   .setThumbnail(sicon)
+   .addField("ID", message.guild.id, true)
+   .addField("Nume", message.guild.name, true)
+   .addField("Owner", message.guild.owner.user.tag, true)
+   .addField("Regiune", message.guild.region, true)
+   .addField("Canale", message.guild.channels.size, true)
+   .addField("Membrii", message.guild.memberCount, true)
+   .addField("Umani", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Boti", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Online", online.size, true)
+   .addField("Roluri", message.guild.roles.size, true);
+   message.channel.send({embed});
+return;
+}
   });
   
 bot.login(process.env.BOT_TOKEN);

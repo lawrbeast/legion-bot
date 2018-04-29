@@ -62,7 +62,7 @@ bot.on("message", async message => {
         .setFooter(`${message.guild.name}`, message.guild.iconURL)
         .setTitle(`♦${message.guild.name}♦`, message.guild.iconURL);
 
-        return message.channel.send(serverembed);
+        return message.channel.send({serverembed});
     }
   });
   

@@ -2,7 +2,23 @@ const Discord = require('discord.js');
 const moment = require('moment');
 require("moment-duration-format");
 const bot = new Discord.Client();
+fs.readdir("./commands", (err, files) => {
 
+    if(err) console.log(err)
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length <= 0){
+        console.log("Nu ai creat folder-ul commands!");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let props = require(`./commands/${f}`)
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+
+});
 bot.on('guildMemberAdd', function(member) {
     member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.`);
   });
@@ -18,14 +34,6 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let sender = message.author;
     let args = messageArray.slice(1);
- try { // try following:
-  	let commands = require(`./commands/${prefix}${cmd}.js`);
-  	commands.run(client, message, args); // runs commands folder
-  } catch (e) { // catches error
-  	console.log(e.stack);
-  } finally {
-  	console.log(`${message.author.tag} ran the ${cmd} command`);
-  }
 	//COMMANDS
 if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;

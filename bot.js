@@ -19,7 +19,7 @@ bot.on("message", message => {
     let sender = message.author;
     let args = messageArray.slice(1);
  try { // try following:
-  	let commands = require(`./commands/${cmd}.js`);
+  	let commands = require(`./commands/${prefix}${cmd}.js`);
   	commands.run(client, message, args); // runs commands folder
   } catch (e) { // catches error
   	console.log(e.stack);

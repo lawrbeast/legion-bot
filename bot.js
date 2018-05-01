@@ -1,27 +1,10 @@
 const Discord = require('discord.js');
 const moment = require('moment');
-const fs = require("fs");
 require("moment-duration-format");
 const bot = new Discord.Client();
-fs.readdir("./commands", (err, files) => {
-
-    if(err) console.log(err)
-
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0){
-        console.log("Nu ai creat folder-ul commands!");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/${f}`)
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-    });
-
-});
+//
 bot.on('guildMemberAdd', function(member) {
-    member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.`);
+    member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.\nEsti al ${message.guild.memberCount}-lea membru!`);
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);

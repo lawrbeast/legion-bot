@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const moment = require('moment');
+const fs = require("fs");
 require("moment-duration-format");
 const bot = new Discord.Client();
 fs.readdir("./commands", (err, files) => {

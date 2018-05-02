@@ -18,7 +18,6 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let sender = message.author;
     let args = messageArray.slice(1);
-    let msg = message.content.toUpperCase()
 	//COMMANDS
 if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;
@@ -106,11 +105,13 @@ if(cmd === `${prefix}botstats`){
 	return;
 }
 	//ANTI INVITE LINK
+	let msg = message.content.toUpperCase();
 	let bypassrole = message.guild.roles.find('name', 'Bot Commander')
 	if(message.member.roles.has(bypassrole)) return
-	if (msg.includes === `DISCORD.GG`){
+	if (msg.includes(`DISCORD.GG`)){
 		message.channel.send("**Fără invite link-uri!**");
 		message.delete();
+		return
 	}
   });
   

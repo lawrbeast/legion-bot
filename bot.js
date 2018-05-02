@@ -106,8 +106,8 @@ if(cmd === `${prefix}botstats`){
 }
 	//ANTI INVITE LINK
 	let msg = message.content.toUpperCase();
-	let bypassrole = message.guild.roles.find('name', 'Bot Commander')
-	if(message.member.hasRole(bypassrole)) return
+	let modrole = message.guild.roles.find('name', '+')
+	if(message.member.roles.has(modrole)) return;
 	if (msg.includes(`DISCORD.GG`)){
 		message.channel.send("**Fără invite link-uri!**");
 		message.delete();

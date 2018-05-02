@@ -106,7 +106,7 @@ if(cmd === `${prefix}botstats`){
 	return;
 }
 	//ANTI INVITE LINK
-	let bypassrole = messsage.guild.roles.find('name', 'Bot Commander')
+	let bypassrole = message.guild.roles.find('name', 'Bot Commander')
 	if(message.member.roles.has(bypassrole)) return
 	if (msg.includes === `DISCORD.GG`){
 		message.channel.send("**Fără invite link-uri!**");

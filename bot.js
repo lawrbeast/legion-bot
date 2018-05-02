@@ -106,8 +106,8 @@ if(cmd === `${prefix}botstats`){
 }
 	//ANTI INVITE LINK
 	let msg = message.content.toUpperCase();
-	if(message.member.has.role("name", "+") return;
-	if (msg.includes(`DISCORD.GG`)){
+	if(message.member.hasPermission("ADMINISTRATOR")) return;
+if (msg.includes(`DISCORD.GG`)){
 		message.channel.send("**Fără invite link-uri!**");
 		message.delete();
 		return

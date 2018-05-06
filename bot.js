@@ -125,7 +125,6 @@ if(cmd === `${prefix}gif`){
             .setImage(gifUrl)
         message.channel.send({embed});
     });
-	return
 }
   });
   

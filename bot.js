@@ -119,11 +119,14 @@ if (msg.includes(`DISCORD.GG`)){
 	}
 	//GIF
 if(cmd === `${prefix}gif`){
-     gifSearch.random(args[0]).then(gifUrl => {
-          const embed = new Discord.RichEmbed()
-            .setColor(`RANDOM`)
+	gifSearch.random(args[0]).then(
+        gifUrl => {
+
+        let randomcolor = ((1 << 24) * Math.random() | 0).toString(16) //Optional
+        var embed = new Discord.RichEmbed()
+            .setColor(`#${randomcolor}`)
             .setImage(gifUrl)
-        message.channel.send({embed});
+        message.author.send(embed);
     });
 }
   });

@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Nu ai permisiunile necesare.");
         if(kUser.hasPermission("KICK_MEMBERS")) return message.channel.send("Nu poti face asta unui administrator.");
 
-        message.guild.member(kUser).kick(kReason).then(msg => {message.channel.send(`**${kUser.tag} a primit kick :white_check_mark:!**`)});
+        message.guild.member(kUser).kick(kReason).then(msg => {message.channel.send(`**${kUser} a primit kick :white_check_mark:!**`)});
 }
 
 module.exports.help = {

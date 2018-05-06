@@ -117,9 +117,8 @@ if (msg.includes(`DISCORD.GG`)){
 		message.delete();
 		return
 	}
+	//GIF
 if(cmd === `${prefix}gif`){
-   if (!args[0]) return message.channel.send("`$gif <gname>`");
-
      gifSearch.random(args[0]).then(
         gifUrl => {
           const embed = new Discord.RichEmbed()

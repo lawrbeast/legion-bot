@@ -118,16 +118,16 @@ if (msg.includes(`DISCORD.GG`)){
 		return
 	}
 if(cmd === `${prefix}gif`){
-   if (!args[0]) return message.channel.send("`"+PREFIX+"gif <gname>`");
+   if (!args[0]) return message.channel.send("`$gif <gname>`");
 
      gifSearch.random(args[0]).then(
         gifUrl => {
-          var embed = new Discord.RichEmbed()
+          const embed = new Discord.RichEmbed()
             .setColor(`RANDOM`)
             .setImage(gifUrl)
-        message.channel.send(embed);
+        message.channel.send({embed});
     });
-	}
+}
   });
   
 bot.login(process.env.BOT_TOKEN);

@@ -24,12 +24,8 @@ fs.readdir("./commands", (err, files) => {
 });
 //
 bot.on('guildMemberAdd', function(member) {
-    	member.guild.channels.get('442691307144609792').setName(`Numarul Membrilor: ${member.guild.memberCount}`);
 	member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.`);
   });
-bot.on('guildMemberRemove', function(member) {
-	member.guild.channels.get('442691307144609792').setName(`Numarul Membrilor: ${member.guild.memberCount}`)	
-});
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
     bot.user.setPresence({ game: { name: `Prefix: $help`, url: 'https://twitch.tv/qlau234', type: 1 } });

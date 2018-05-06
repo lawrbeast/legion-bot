@@ -4,6 +4,7 @@ require("moment-duration-format");
 const gifSearch = require("gif-search");
 const bot = new Discord.Client();
 const fs = require("fs");
+bot.commands = new Discord.Collection();
 fs.readdir("./commands", (err, files) => {
 
     if(err) console.log(err)

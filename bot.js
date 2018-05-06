@@ -23,6 +23,16 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let sender = message.author;
     let args = messageArray.slice(1);
+	//COMMAND HANDLER
+try { // try following:
+  	let commands = require(`./commands/${cmd}.js`);
+  	commands.run(client, message, args); // runs commands folder
+  } catch (e) { // catches error
+  	console.log(e.stack);
+  } finally {
+  	console.log(`${message.author.tag} ran the ${cmd} command`);
+  }
+	//COMMAND HANDLER
 	//COMMANDS
 if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;

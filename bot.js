@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 require("moment-duration-format");
+const gifSearch = require('gif-search');
 const bot = new Discord.Client();
 //
 bot.on('guildMemberAdd', function(member) {
@@ -115,6 +116,17 @@ if (msg.includes(`DISCORD.GG`)){
 		message.channel.send("**Fără invite link-uri!**");
 		message.delete();
 		return
+	}
+if(cmd === `${prefix}gif`){
+   if (!args[0]) return message.channel.send("`"+PREFIX+"gif <gname>`");
+
+     gifSearch.random(args[0]).then(
+        gifUrl => {
+          var embed = new Discord.RichEmbed()
+            .setColor(`RANDOM`)
+            .setImage(gifUrl)
+        message.channel.send(embed);
+    });
 	}
   });
   

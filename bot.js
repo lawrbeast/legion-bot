@@ -3,6 +3,24 @@ const moment = require('moment');
 require("moment-duration-format");
 const gifSearch = require("gif-search");
 const bot = new Discord.Client();
+const fs = require("fs");
+fs.readdir("./commands", (err, files) => {
+
+    if(err) console.log(err)
+
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+    if(jsfile.length <= 0){
+        console.log("Nu ai creat folder-ul commands!");
+        return;
+    }
+
+    jsfile.forEach((f, i) => {
+        let props = require(`./commands/${f}`)
+        console.log(`${f} loaded!`);
+        bot.commands.set(props.help.name, props);
+    });
+
+});
 //
 bot.on('guildMemberAdd', function(member) {
     	member.guild.channels.get('442691307144609792').setName(`Numarul Membrilor: ${member.guild.memberCount}`);
@@ -23,16 +41,6 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let sender = message.author;
     let args = messageArray.slice(1);
-	//COMMAND HANDLER
-try { // try following:
-  	let commands = require(`./commands/${cmd}.js`);
-  	commands.run(client, message, args); // runs commands folder
-  } catch (e) { // catches error
-  	console.log(e.stack);
-  } finally {
-  	console.log(`${message.author.tag} ran the ${cmd} command`);
-  }
-	//COMMAND HANDLER
 	//COMMANDS
 if(cmd === `${prefix}avatar`){
     let user = message.mentions.users.first() || message.author;

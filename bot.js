@@ -98,7 +98,7 @@ if(cmd === `${prefix}serverinfo`){
    let month = 1 + message.guild.createdAt.getMonth()
    let year = message.guild.createdAt.getFullYear()
    let sicon = message.guild.iconURL;
-   let guild = message.guild.roles
+   let guild = message.guild
    let embed = new Discord.RichEmbed()
    .setAuthor(message.guild.name, sicon)
    .setFooter(`Server Creat • ${day}.${month}.${year}`)

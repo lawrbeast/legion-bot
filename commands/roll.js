@@ -5,12 +5,12 @@ exports.run = async (bot, message, args, level) => {
 
   let result = Math.floor((Math.random() * replies.length));
 
-  let ballembed = new Discord.RichEmbed()
+  const embed = new Discord.RichEmbed()
   .setAuthor(message.author.tag)
   .setColor("#000000")
   .setDescription(`Rezultat: **${replies[result]}**`)
 
-  message.channel.send({ballembed});
+  message.channel.send({embed});
 }
 exports.help = {
   name: "roll"

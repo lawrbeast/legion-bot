@@ -75,8 +75,8 @@ if(cmd === `${prefix}avatar`){
 		.addField("A intrat pe server:", `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
 		.addField("Bot:", `${user.bot}`, true)
 		.addField("Status:", `${user.presence.status}`, true)
-		.addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-		.addField("Roles:", member.roles.map(roles => `${roles.name}`).join(', '), true)
+		.addField("Joc:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
+		.addField("Roluri:", member.roles.map(roles => `${roles.name}`).join(', '), true)
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
 	  return;
@@ -112,7 +112,7 @@ if(cmd === `${prefix}serverinfo`){
    .addField("Umani", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Boti", message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Online", online.size, true)
-   .addField("Roluri", message.guild.roles.size, true);
+   .addField("Roluri:", member.roles.map(roles => `${roles.name}`).join(', '), true)
    message.channel.send({embed});
 return;
 }

@@ -86,8 +86,8 @@ if(cmd === `${prefix}avatar`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
 		.setTitle("Legion's Commands")
-		.setDescription("$userinfo - Iti arata informatiile unui membru\n$avatar [@Legion Guard] - Iti arata avatarul tau sau al unui membru\n$serverinfo - Iti arata informatiile server-ului.\n$botstats - Iti arata informatiile bot-ului.")
-		.setFooter("Version 0.0.1 - PreAlpha")
+		.setDescription("**Fun**\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick <@user> - dai kick unui user")
+		.setFooter("<OPTIONAL> Pre-Alpha 0.0.2")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
 	}

@@ -76,7 +76,7 @@ if(cmd === `${prefix}avatar`){
 		.addField("Bot:", `${user.bot}`, true)
 		.addField("Status:", `${user.presence.status}`, true)
 		.addField("Joc:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-		.addField("Roluri:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
+		.addField("Roluri:", member.roles.map(roles => `${roles.name}`).join(', '), true)
 		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
      message.channel.send({embed});
 	  return;
@@ -112,7 +112,7 @@ if(cmd === `${prefix}serverinfo`){
    .addField("Umani", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Boti", message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Online", online.size, true)
-   .addField("Roluri:", member.roles.map(roles => `${roles.name}`).join(', '), true)
+   .addField("Roluri:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
    message.channel.send({embed});
 return;
 }

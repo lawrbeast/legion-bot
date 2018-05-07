@@ -8,7 +8,7 @@ exports.run = async (bot, message, args, level) => {
   const embed = new Discord.RichEmbed()
   .setAuthor(message.author.tag)
   .setColor("#000000")
-  .setDescription(`Rezultat: **${replies[result]}**`)
+  .setDescription(`Arunca un zar si cade numarul: **${replies[result]}**`)
 
   message.channel.send({embed});
 }

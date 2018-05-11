@@ -86,7 +86,7 @@ if(cmd === `${prefix}avatar`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
 		.setTitle("Legion's Commands")
-		.setDescription("**Fun**\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
+		.setDescription("**Fun**:dancer:\n$meme - Iti arata un meme random.\n$roll - arunca un zar\nw!emojify - transforma un text in emoji\nw!gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\nw!userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
 		.setFooter("<OPTIONAL> & [NECESAR] | Pre-Alpha 0.0.2")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
@@ -101,19 +101,19 @@ if(cmd === `${prefix}serverinfo`){
    let guild = message.guild
    let embed = new Discord.RichEmbed()
    .setAuthor(message.guild.name, sicon)
-   .setFooter(`Server Creat • ${day}.${month}.${year}`)
+   .setFooter(`Creat pe • ${day}.${month}.${year}`)
    .setColor("#7289DA")
    .setThumbnail(sicon)
    .addField("ID", message.guild.id, true)
-   .addField("Nume", message.guild.name, true)
+   .addField("Name", message.guild.name, true)
    .addField("Owner", message.guild.owner.user.tag, true)
    .addField("Regiune", message.guild.region, true)
    .addField("Canale", message.guild.channels.size, true)
-   .addField("Membrii", message.guild.memberCount, true)
-   .addField("Umani", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("Boti", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Members", message.guild.memberCount, true)
+   .addField("Humans", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Bots", message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Online", online.size, true)
-   .addField("Roluri:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
+   .addField("Roles:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
    message.channel.send({embed});
 return;
 }

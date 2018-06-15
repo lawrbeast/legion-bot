@@ -25,6 +25,7 @@ fs.readdir("./commands", (err, files) => {
 //
 bot.on('guildMemberAdd', function(member) {
 	member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.`);
+	member.guild.channels.find('457254692347576340').setName(`Total Users: ${message.guild.members.size}`);
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);

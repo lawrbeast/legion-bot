@@ -15,6 +15,7 @@ module.exports.run = (bot, message, args) => {
         .addField('You choosed:', replies[result])
         .setFooter('Fuck, Marry, Kill!', bot.user.displayAvatarURL)
         .setTimestamp();
+    if (!message.mentions.users.first()) return
     
     message.channel.send({embed:makifuembed})
 }

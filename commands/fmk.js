@@ -15,8 +15,7 @@ module.exports.run = (bot, message, args) => {
         .addField('You choosed:', replies[result])
         .setFooter('Fuck, Marry, Kill!', bot.user.displayAvatarURL)
         .setTimestamp();
-
-    if (!message.mentions.users.first()) return message.channel.send(`<@${message.author.id}>, te rog sa mentionezi un membru!`).then(msg => {msg.delete(3000))};
+    
     message.channel.send({embed: makifuembed});
     
     module.exports.help = {

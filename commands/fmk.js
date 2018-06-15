@@ -3,7 +3,7 @@
 const Discord = require('discord.js');
 
 // Make sure you use exports.run when you have a command handler!
-module.exports.run = async (bot, message, args) => {
+module.exports.run = (bot, message, args) => {
 
     let replies = ['MARRY :ring:', 'KILL :bomb:', 'FUCK :ok_hand:'];
     let result = Math.floor(Math.random() * replies.length);
@@ -22,6 +22,6 @@ module.exports.run = async (bot, message, args) => {
 
     message.channel.send({embed: makifuembed});
     
-    exports.help = {
+    module.exports.help = {
       name: "fmk"
       }

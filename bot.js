@@ -25,7 +25,11 @@ fs.readdir("./commands", (err, files) => {
 //
 bot.on('guildMemberAdd', function(member) {
 	member.guild.channels.find("name", "new-faggs").sendMessage(`Bine ai venit pe server, ${member} tocmai ai devenit un new fag!\n:black_medium_small_square:  Nu avem reguli, dar totuși sperăm să te comporți cât de cât omenește.`);
-	member.guild.channels.find('457254692347576340').setName(`Total Users: ${message.guild.members.size}`);
+	member.guild.channels.get('457254692347576340').setName(`Total Users: ${member.guild.memberCount}`)
+    let humans = member.guild.members.filter(m => !m.user.bot).size;
+    	member.guild.channels.get('457254778800570369').setName(`Members: ${humans}`)
+    let bots = member.guild.members.filter(m => m.user.bot).size;
+    	member.guild.channels.get('457254822614401024').setName(`Bots: ${bots}`)
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
@@ -86,9 +90,10 @@ if(cmd === `${prefix}avatar`){
 	if(cmd === `${prefix}help`){
 		let embed = new Discord.RichEmbed()
 		.setColor("#fcfdff")
-		.setTitle("Legion's Commands")
+		.setTitle("Death's Commands")
+		.setThumbnail('https://cdn.discordapp.com/attachments/456900268739657741/457252834228961280/Deathicon.png')
 		.setDescription("**Fun**:dancer:\n$meme - Iti arata un meme random.\n$roll - arunca un zar\nw!emojify - transforma un text in emoji\nw!gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\nw!userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
-		.setFooter("<OPTIONAL> & [NECESAR] | Pre-Alpha 0.0.2")
+		.setFooter("Alpha Version 0.2")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
 	}

@@ -16,7 +16,8 @@ module.exports.run = (bot, message, args) => {
         .setFooter('Fuck, Marry, Kill!', bot.user.displayAvatarURL)
         .setTimestamp();
     
-    message.channel.send({embed: makifuembed});
+    message.channel.send({embed:makifuembed})
+}
     
     module.exports.help = {
       name: "fmk"

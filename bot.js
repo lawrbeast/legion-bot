@@ -24,9 +24,6 @@ fs.readdir("./commands", (err, files) => {
 });
 //
 bot.on('guildMemberAdd', function(member) {
-	//welcome
-	member.guild.channels.get('457260500833533970').sendMessage(`Bun venit pe Death Squad, ${member}, speram sa te simti cat mai bine alaturi de noi!\n:black_medium_small_square:  Daca doresti sa ne ajuti in dezoltarea acestui server, poti face o aplicatie de a intra in staff sau sa recomanzi serverul in alte parti! :muscle:`);
-	//welcome/
 	member.guild.channels.get('457254692347576340').setName(`Total Users: ${member.guild.memberCount}`)
     let humans = member.guild.members.filter(m => !m.user.bot).size;
     	member.guild.channels.get('457254778800570369').setName(`Members: ${humans}`)

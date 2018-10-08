@@ -87,7 +87,7 @@ if(cmd === `${prefix}avatar`){
 		.setColor("#fcfdff")
 		.setTitle("Death's Commands")
 		.setThumbnail('https://cdn.discordapp.com/attachments/456900268739657741/457252834228961280/Deathicon.png')
-		.setDescription("**Fun**:dancer:\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
+		.setDescription("**Fun**:dancer:\n$roll - arunca zarul iar $roll duel @user - dueleaza-te cu cineva prin zaruri!\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
 		.setFooter("Dacă ai găsit vreun, folosește $reportbug <bug>.")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
@@ -106,15 +106,15 @@ if(cmd === `${prefix}serverinfo`){
    .setColor("#7289DA")
    .setThumbnail(sicon)
    .addField("ID", message.guild.id, true)
-   .addField("Name", message.guild.name, true)
-   .addField("Owner", message.guild.owner.user.tag, true)
+   .addField("Nume", message.guild.name, true)
+   .addField("Deținător", message.guild.owner.user.tag, true)
    .addField("Regiune", message.guild.region, true)
    .addField("Canale", message.guild.channels.size, true)
-   .addField("Members", message.guild.memberCount, true)
-   .addField("Humans", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("Bots", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Membrii", message.guild.memberCount, true)
+   .addField("Oameni", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("Boți", message.guild.members.filter(m => m.user.bot).size, true)
    .addField("Online", online.size, true)
-   .addField("Roles:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
+   .addField("Roluri:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
    message.channel.send({embed});
 return;
 }

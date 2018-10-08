@@ -6,7 +6,7 @@ module.exports.run = (bot, message, args) => {
  .setDescription("❌ Nu poti face asta deoarece nu ai permisiunile necesare.")
  .setColor("#bc2731")
  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send({embed:mspEmbed});
- if(!args[0]) return message.channel.send("Te rog să introduci un numar de mesaje între 0 si 100!") return;
+ if(!args[0]) return message.channel.send("Te rog să introduci un numar de mesaje între 0 si 100!")
  message.channel.bulkDelete(args[0]).then(() => {
      message.channel.send.then(msg => msg.delete(10000));
  });

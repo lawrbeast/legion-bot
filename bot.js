@@ -24,7 +24,7 @@ fs.readdir("./commands", (err, files) => {
 });
 //
 bot.on('guildMemberAdd', function(member) {
-	member.guild.channels.get('498051480310251530').sendMessage(`Bun venit pe server ${member}!\nNumarul tau este: **${member.guild.memberCount}**`);
+	member.guild.channels.get('498051480310251530').sendMessage(`Bun venit pe **${member.guild.name}**, ${member}!\nNumarul tau este: **${member.guild.memberCount}**.`);
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);

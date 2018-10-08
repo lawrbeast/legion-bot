@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args, prefix) => {
 let voteembed = new Discord.RichEmbed()
 .setColor("RANDOM")
 .setTitle("Voteaza!")
-.setDescription(`🔊\n${args.join(" ")}`)
+.setDescription(`🔻\n${args.join(" ")}`)
 .setFooter("Primal | qLau ©");
 
 const msg = await message.channel.send({embed:voteembed})

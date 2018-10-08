@@ -4,8 +4,9 @@ module.exports.run = async (bot, message, args, prefix) => {
 
 let voteembed = new Discord.RichEmbed()
 .setColor("RANDOM")
-.setDescription(`**Voteaza!**\n\n${args.join(" ")}\n\nVot creeat de ${message.author}`)
-.setFooter("Primal | qLau ©");
+.setTitle("Voteaza!")
+.setDescription(`${args.join(" ")}`)
+.setFooter("Primal | qLau ©| Vot creeat de ${message.author}");
 
 const msg = await message.channel.send({embed:voteembed})
 await msg.react("✅");

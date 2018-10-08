@@ -7,7 +7,7 @@ let voteembed = new Discord.RichEmbed()
 .setDescription(`**Voteaza!**\n\n${args.join(" ")}\n\nVot creeat de ${message.author}`)
 .setFooter("Primal | qLau ©");
 
-const msg = await message.channel.send(voteembed)
+const msg = await message.channel.send({embed:voteembed})
 await msg.react("✅");
 await msg.react("❎");
 

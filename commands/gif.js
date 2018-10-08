@@ -10,7 +10,7 @@ exports.run = (client, message, args, tools) => {
             .setImage(gifUrl)
         message.channel.send({embed});
     });
-  if(!args[0) return;
+  if(!args[0]) return;
   }
 exports.help = {
   name: "gif" 

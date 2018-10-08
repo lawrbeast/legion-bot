@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const gifSearch = require('gif-search');
 
 exports.run = (client, message, args, tools) => {
+  if(!args[0]) return;
   gifSearch.random(args[0]).then(
         gifUrl => {
 
@@ -10,7 +11,6 @@ exports.run = (client, message, args, tools) => {
             .setImage(gifUrl)
         message.channel.send({embed:embed});
     });
-  if(!args[0]) return;
   }
 exports.help = {
   name: "gif" 

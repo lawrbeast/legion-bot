@@ -24,11 +24,7 @@ fs.readdir("./commands", (err, files) => {
 });
 //
 bot.on('guildMemberAdd', function(member) {
-	member.guild.channels.get('457254692347576340').setName(`Total Users: ${member.guild.memberCount}`)
-    let humans = member.guild.members.filter(m => !m.user.bot).size;
-    	member.guild.channels.get('457254778800570369').setName(`Members: ${humans}`)
-    let bots = member.guild.members.filter(m => m.user.bot).size;
-    	member.guild.channels.get('457254822614401024').setName(`Bots: ${bots}`)
+	member.guild.channels.get('498051480310251530').sendMessage(`Bun venit pe server ${member}!\nNumarul tau este: **${member.guild.memberCount}**`);
   });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);

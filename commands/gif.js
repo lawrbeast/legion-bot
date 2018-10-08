@@ -8,7 +8,7 @@ exports.run = (client, message, args, tools) => {
         const embed = new Discord.RichEmbed()
             .setColor(`RANDOM`)
             .setImage(gifUrl)
-        message.channel.send({embed});
+        message.channel.send({embed:embed});
     });
   if(!args[0]) return;
   }

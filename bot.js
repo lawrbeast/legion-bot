@@ -88,7 +88,7 @@ if(cmd === `${prefix}avatar`){
 		.setTitle("Death's Commands")
 		.setThumbnail('https://cdn.discordapp.com/attachments/456900268739657741/457252834228961280/Deathicon.png')
 		.setDescription("**Fun**:dancer:\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
-		.setFooter("Alpha Version 0.2")
+		.setFooter("Dacă ai găsit vreun, folosește $reportbug <bug>.")
 		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
 		return;
 	}

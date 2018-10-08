@@ -11,7 +11,7 @@ try {
     const bug = args.join(" ")
     if (!bug) return message.channel.send('Please specify a bug!')
     const content = clean(`**${message.author.username}**#${message.author.discriminator} (${message.author.id}) a raportat un bug:\n**BUG:**${bug}\nServer: **${message.guild.name}**\nID: **${message.guild.id}**`);
-    const id = '457268000018530364';
+    const id = '498907312593829888';
     new Promise((resolve, reject) => {
       superagent.post(`https://discordapp.com/api/channels/${id}/messages`)
         .set('Authorization', `Bot ${client.token}`).send({ content })

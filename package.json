@@ -9,6 +9,7 @@
     "dependencies": {
       "discord.js": "11.1.0",
       "fs": "0.0.1-security",
+      "unique-random": "2.0.0",
       "moment": "2.22.1",
       "memejs": "1.0.7",
       "superagent": "^3.8.3",

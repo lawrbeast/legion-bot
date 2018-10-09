@@ -34,8 +34,8 @@ bot.on("message", message => {
   if(message.channel.type === "dm") return
 	
 //MESAJE FARA PREFIX
-	if(message.content === "vreau unban"){
-		message.channel.send("Banul ramane! 🔨")
+	if(message.content === "aolo gucci" | "aolo guci"){
+		message.channel.send("https://youtu.be/W6wTdLzYFSc")
 	}
 	
 	if(message.content === "ce faci nuca?"){

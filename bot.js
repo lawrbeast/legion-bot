@@ -34,9 +34,6 @@ bot.on("message", message => {
   if(message.channel.type === "dm") return
 	
 //MESAJE FARA PREFIX
-if(message.content.includes("nuca")){
-	message.channel.send("@nuca prostule te striga oamenii")
-} return
 	
 //
 

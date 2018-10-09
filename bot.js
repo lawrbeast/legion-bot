@@ -32,6 +32,13 @@ bot.on("ready", async () => {
 });
 bot.on("message", message => {
   if(message.channel.type === "dm") return
+	
+//MESAJE FARA PREFIX
+if(msg.content.includes("nuca")){
+	message.channel.send("@nuca prostule te striga oamenii")
+} return
+	
+//
 
     const prefix = "$";
     let messageArray = message.content.split(" ");

@@ -50,38 +50,6 @@ bot.on("message", message => {
 		message.channel.send("Nu va puneti cu lau!!!!!")
 	}
 	
-	if(message.content === "skemasampistcordit"){
-		message.channel.send(`http://i.imgur.com/DmzFvaA.jpg`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-		message.channel.send(`Nuca culkat`)
-	} return
-	
 //
 
     const prefix = "$";

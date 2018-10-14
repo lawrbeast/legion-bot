@@ -42,6 +42,10 @@ bot.on("message", message => {
 		message.channel.send("Nuca face contrabanda de supt pula!")
 	}
 	
+	if(message.content === "skemalau"){
+		message.channel.send(`SkemaLau ON\nhttps://ksassets.timeincuk.net/wp/uploads/sites/55/2015/03/2015Pantera_Dimebag_GettyImages_1305699020315-920x612.jpg\nhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWyM19W4hbWrUm2XQgeE30ct3x8UfmD8yDww-roD0_UR37r9io\nhttps://www.billboard.com/files/styles/article_main_image/public/media/dimebag-darrell-july-2004-portrait-billboard-650.jpg`)
+	}
+	
 //
 
     const prefix = "$";

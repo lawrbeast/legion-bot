@@ -43,12 +43,7 @@ bot.on("message", message => {
 	}
 	
 	if(message.content === "skemalau"){
-		message.channel.send(`SkemaLau se activeaza.....`)
-		message.channel.send(`Incarc fisierele virusate....`)
-		message.channel.send(`Introduc codul pentru logger 35%`)
-		message.channel.send(`Incerc sa scot protectia antivirusului 70%`)
-		message.channel.send(`Windowsul in curs de stergere 100%.`)
-		message.channel.send(`Nu va puneti cu lau!!!!!!!!`)
+		message.channel.send("qLau este seful si seful este qLau nu va puneti la el") return
 	}
 	
 //

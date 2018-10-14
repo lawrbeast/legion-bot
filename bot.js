@@ -42,8 +42,16 @@ bot.on("message", message => {
 		message.channel.send("Nuca face contrabanda de supt pula!")
 	}
 	
-	if(message.content === "skemalau"){
-		message.channel.send("qLau este seful si seful este qLau nu va puneti la el") return
+	if(message.content === "va place?"){
+		message.channel.send("arata bn")
+	}
+	
+	if(message.content === "handicapat"){
+		message.channel.send("Nu va puneti cu lau!!!!!")
+	}
+	
+	if(message.content === "cutit"){
+		message.channel.send("Nu vorbiti de cutite ca daca vine lau va injunghie mortal pe toti futuva mortii mami in gura!")
 	}
 	
 //

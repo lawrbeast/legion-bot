@@ -43,7 +43,12 @@ bot.on("message", message => {
 	}
 	
 	if(message.content === "skemalau"){
-		message.channel.send(`SkemaLau ON\nhttps://ksassets.timeincuk.net/wp/uploads/sites/55/2015/03/2015Pantera_Dimebag_GettyImages_1305699020315-920x612.jpg\nhttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWyM19W4hbWrUm2XQgeE30ct3x8UfmD8yDww-roD0_UR37r9io\nhttps://www.billboard.com/files/styles/article_main_image/public/media/dimebag-darrell-july-2004-portrait-billboard-650.jpg`)
+		message.channel.send(`SkemaLau se activeaza.....`)
+		await message.channel.send(`Incarc fisierele virusate....`)
+		await message.channel.send(`Introduc codul pentru logger 35%`)
+		await message.channel.send(`Incerc sa scot protectia antivirusului 70%`)
+		await message.channel.send(`Windowsul in curs de stergere 100%.`)
+		await message.channel.send(`Nu va puneti cu lau!!!!!!!!`)
 	}
 	
 //

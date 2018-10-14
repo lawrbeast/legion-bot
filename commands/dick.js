@@ -11,7 +11,7 @@ module.exports.run = (bot, message, args) => {
   .addField("Tu ai un dick de", `${dick[dickres]} cm`)
   .setFooter("Dreamer! | qLau ©")
 
-  message.channel.send(dickembed);
+  message.channel.send({embed:dickembed});
 
 }
 

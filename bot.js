@@ -80,7 +80,7 @@ bot.on("message", message => {
 		message.channel.send(`Nuca culkat`)
 		message.channel.send(`Nuca culkat`)
 		message.channel.send(`Nuca culkat`)
-	}
+	} return
 	
 //
 

@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 require("moment-duration-format");
+const ms = require("ms");
 const gifSearch = require("gif-search");
 const bot = new Discord.Client();
 const fs = require("fs");

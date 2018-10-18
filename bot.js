@@ -46,8 +46,8 @@ bot.on("message", message => {
 		message.channel.send("arata bn")
 	}
 	
-	if(message.content === "handicapat"){
-		message.channel.send("Nu va puneti cu lau!!!!!")
+	if(message.content.includes === "anime"){
+		message.channel.send("Să vă iau anime-urile în pulă de weebs infecți\n👉 :airplane:")
 	}
 	
 //

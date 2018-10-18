@@ -159,9 +159,9 @@ if (msg.includes(`DISCORD.GG`)){
 		message.delete();
 		return
 	}
-	if(msg.includes(`ANIME`)){
+if (msg.includes(`ANIME`)){
 		message.channel.send(`Să vă iau anime-urile în pulă de weebs infecți, mai ales tu ${message.author}\n👉 :airplane:`).then(msg => {msg.delete(5000)});
-		
+		return;
 	}
 	//GIF
 if(cmd === `${prefix}gif`){

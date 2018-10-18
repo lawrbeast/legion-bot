@@ -46,7 +46,7 @@ bot.on("message", message => {
 		message.channel.send("arata bn")
 	}
 	
-	if(message.content.includes === "anime"){
+	if(message.content === "anime"){
 		message.channel.send("Să vă iau anime-urile în pulă de weebs infecți\n👉 :airplane:")
 	}
 	

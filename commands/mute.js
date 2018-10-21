@@ -1,43 +1,48 @@
 const Discord = require("discord.js");
 const ms = require("ms");
 
-module.exports.run =  (bot, message, args) => {
-    let member = message.mentions.members.first();
-    if(!member) return message.reply("Nu ai specificat membrul.");
-    let muteRole = message.guild.roles.find("name", "Muted");
-    if(!muteRole) return message.reply("Nu ai creat role-ul Muted.");
-    let params = message.content.split(" ").slice(1);
-    let time = params[1];
-    if(!time) return message.reply("Nu ai specificat timpul.");
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":no_entry_sign: Nu aveți permisiunea pentru a face asta!");
-    if(member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":no_entry_sign: Acest membru este un moderator sau un administrator!");
+module.exports.run = (bot, message, args) => {
 
-    member.addRole(muteRole.id);
-    let muteEmbed = new Discord.RichEmbed()
-	.setFooter(`${message.guild.name}`, `${message.guild.iconURL}`)
-    .setDescription(`MUTE INFO`)
-    .setColor("#bc2731")
-    .addField("Membru", member, true)
-    .addField("Moderator", message.author, true)
-    .addField("Durata", time, true)
-    let muteChannel = message.guild.channels.find(`name`, "logs");
-      muteChannel.send({embed:muteEmbed})
+  //!tempmute @user 1s/m/h/d
 
-    setTimeout(function() {
-      member.removeRole(muteRole.id)
-      let unmuteEmbed = new Discord.RichEmbed()
-	  .setFooter(`${message.guild.name}`, `${message.guild.iconURL}`)
-      .setDescription(`UNMUTE INFO`)
-      .setColor("#bc2731")
-      .addField("Membru", member, true)
-      .addField("Moderator", message.author, true)
-      .addField("Motiv", "Auto", true)
-      let unmuteChannel = message.guild.channels.find(`name`, "logs");
-        unmuteChannel.send({embed:unmuteEmbed})
-    }, ms(time));
+  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!tomute) return message.reply("Couldn't find user.");
+  if(tomute.hasPermission("ADMINISTRATOR")) return message.reply("Nu pot da mute unui administrator!");
+  let muterole = message.guild.roles.find(`name`, "muted");
+  //start of create role
+  if(!muterole){
+    try{
+      muterole = await message.guild.createRole({
+        name: "muted",
+        color: "#000000",
+        permissions:[]
+      })
+      message.guild.channels.forEach((channel, id) => {
+        await channel.overwritePermissions(muterole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
+        });
+      });
+    }catch(e){
+      console.log(e.stack);
+    }
+  }
+  //end of create role
+  let mutetime = args[1];
+  if(!mutetime) return message.reply("You didn't specify a time!");
 
+  await(tomute.addRole(muterole.id));
+  message.reply(`<@${tomute.id}> a primit mute pentru ${ms(ms(mutetime))}`);
+
+  setTimeout(function(){
+    tomute.removeRole(muterole.id);
+    message.channel.send(`<@${tomute.id}> a primit unmute!`);
+  }, ms(mutetime));
+
+
+//end of module
 }
 
 module.exports.help = {
-    name: "mute"
+  name: "mute"
 }

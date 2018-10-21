@@ -12,13 +12,13 @@ module.exports.run = (bot, message, args) => {
   //start of create role
   if(!muterole){
     try{
-      muterole = await message.guild.createRole({
+      muterole = message.guild.createRole({
         name: "muted",
         color: "#000000",
         permissions:[]
       })
       message.guild.channels.forEach((channel, id) => {
-        await channel.overwritePermissions(muterole, {
+        channel.overwritePermissions(muterole, {
           SEND_MESSAGES: false,
           ADD_REACTIONS: false
         });
@@ -31,7 +31,7 @@ module.exports.run = (bot, message, args) => {
   let mutetime = args[1];
   if(!mutetime) return message.reply("You didn't specify a time!");
 
-  await(tomute.addRole(muterole.id));
+  (tomute.addRole(muterole.id));
   message.reply(`<@${tomute.id}> a primit mute pentru ${ms(ms(mutetime))}`);
 
   setTimeout(function(){

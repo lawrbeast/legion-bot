@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
         let kickedEmbed = new Discord.RichEmbed()
         .setColor('#0ef24b')
         .setDescription('✅ ${kuser} a primit kick!')
-        message.guild.member(kUser).kick(kReason)
+        message.guild.member(kUser).kick(kReason).then(msg => message.channel.send({embed:kickedEmbed}))
 }
 
 module.exports.help = {

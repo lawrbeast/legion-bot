@@ -3,24 +3,24 @@ const ms = require("ms");
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermissions ('KICK_MEMBERS')) return message.channel.send("Nu ai permisiunea necesara pentru a folosii aceasta comanda.")
-    const modlog = message.guild.channels.find(channel => channel.name === 'mod-logs');
-    const mod = message.author;
-    let user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if (!user) return message.channel.send("Nu gasesc user-ul.")
-    let reason = message.content.split(" ").slice(2).join(" ");
-    if (!reason) return message.channel.send('Te rog sa specifici un motiv!')
-    let muterole = message.guild.roles.find(`name`, "Muted");
-    if(args[0] == "help"){
-      message.reply("Comanda: $mute <user> <timp/s/m/h/d> <motiv>");
-      return;
-    }
-  let muteChannel = message.guild.channels.find(`name`, "logs");
-  if (!muteChannel) return message.channel.send('Te rog sa creezi un channel-ul **logs**!')
-  if (!muterole) {
+
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You don't have enough permission.");
+    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let mmEmbed = new Discord.RichEmbed()
+    .setTitle("Command: $mute")
+    .setColor('#111111')
+    .setDescription('**Description:** Mute a user\n**Usage:** $mute [@User] [time 1s,1m,1h,1d] [reason]\n**Example:** $mute [@qLau] [15m] reason-optional')
+    if (!tomute) return message.channel.send({embed:mmEmbed});
+    if (tomute.hasPermission("ADMINISTRATOR")) return message.channel.send(":heavy_multiplication_x: You can't do that to administrators.");
+    let reason = args.slice(2).join(" ");
+    if (!reason) reason = "no reason"
+
+    let muterole = message.guild.roles.find(`name`, "muted");
+    //start of create role
+    if (!muterole) {
         try {
             muterole = await message.guild.createRole({
-                name: "Muted",
+                name: "muted",
                 color: "#000000",
                 permissions: []
             })
@@ -34,29 +34,40 @@ module.exports.run = async (bot, message, args) => {
             console.log(e.stack);
         }
     }
-
+    //end of create role
     let mutetime = args[1];
+    if (!mutetime) return message.reply("You didn't specified the time.");
 
-    await (user.addRole(muterole.id));
-    const muteembed = new Discord.RichEmbed()
-            .setAuthor(' Action | Mute', `https://images-ext-2.discordapp.net/external/Wms63jAyNOxNHtfUpS1EpRAQer2UT0nOsFaWlnDdR3M/https/image.flaticon.com/icons/png/128/148/148757.png`)
-            .addField('User', `<@${user.id}>`)
-            .addField('Reason', `${reason}`)
-            .addField('Moderator', `${mod}`)
-            .addField('Timp', `${mutetime}`)
-            .setColor('#D9D900')
-        muteChannel.send({embed:muteembed})
+    message.delete().catch(O_o => {});
 
+    let muteEmbed = new Discord.RichEmbed()
+    .setAuthor('Action: Mute', 'https://www.pngrepo.com/download/240070/mute.png')
+    .setColor("#111111")
+    .addField("User", tomute, true)
+    .addField("Moderator", message.author, true)
+    .addField("Duration", mutetime, true)
+    .setTimestamp(new Date());
 
+    let incidentschannel = message.guild.channels.find(`name`, "logs");
+      let mutedEmbed = new Discord.RichEmbed()
+    .setColor('#111111')
+    .addField(`You are now muted on: ${message.guild.name}`, `**Duration:** ${mutetime}\n**Reason:** ${reason}\n**Muted by:** ${message.author}`)
+    tomute.send({embed:mutedEmbed})
+    if (!incidentschannel){
+      await (tomute.addRole(muterole.id));
+       tomute.send(`You are now muted on: ${message.guild.name}\nDuration: ${mutetime}\nReason: ${reason}`)
+    } else {
+    incidentschannel.send({embed:muteEmbed});
+  }
+
+    setTimeout(function() {
+        tomute.removeRole(muterole.id);
+        let unmutedEmbed = new Discord.RichEmbed()
+        .setColor('#111111')
+        .setDescription(`You are now unmuted on guild: ${message.guild.name}`)
+        tomute.send({embed:unmutedEmbed})
+    }, ms(mutetime));
 }
-
-
-exports.conf = {
-    aliases: [],
-    permLevel: 2
-};
-
-module.exports.help = {
-    name: "mute",
-    category: "MODERATION",
+exports.help = {
+  name: "mute"
 }

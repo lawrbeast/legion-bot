@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(':x: Nu poti face asta unui administrator.')
          let unfEmbed = new Discord.RichEmbed()
         .setColor('#dd0d02')
-        .setDescription(':x: Nu poti face asta unui administrator.')
+        .setDescription(':x: Nu gasesc acel user.')
         
         if(!kUser) return message.channel.send({embed:unfEmbed}).then(msg => {msg.delete(5000)});
         let kReason = args.join(" ").slice(22);

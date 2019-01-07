@@ -24,9 +24,6 @@ fs.readdir("./commands", (err, files) => {
 
 });
 //
-bot.on('guildMemberAdd', function(member) {
-	member.guild.channels.get('498051480310251530').sendMessage(`Bun venit pe **${member.guild.name}**, ${member}!\nNumarul tau este: **${member.guild.memberCount}**.`);
-  });
 bot.on("ready", async () => {
     console.log(`Legion Guard este online`);
     bot.user.setPresence({ game: { name: `Prefix: $help`, url: 'https://twitch.tv/qlau234', type: 1 } });

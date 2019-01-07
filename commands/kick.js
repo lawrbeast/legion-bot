@@ -13,10 +13,10 @@ module.exports.run = async (bot, message, args) => {
         .setColor('#dd0d02')
         .setDescription(':x: Nu gasesc acel user.')
         
-        if(!kUser) return message.channel.send({embed:unfEmbed}).then(msg => {msg.delete(5000)});
-        let kReason = args.join(" ").slice(22);
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send({embed:lopEmbed});
+        if(!kUser) return message.channel.send({embed:unfEmbed}).then(msg => {msg.delete(5000)});
         if(kUser.hasPermission("KICK_MEMBERS")) return message.channel.send({embed:indEmbed});
+        let kReason = args.join(" ").slice(22);
         
         let kickedEmbed = new Discord.RichEmbed()
         .setColor('#0ef24b')

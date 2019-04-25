@@ -30,7 +30,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
       "footer": {
         "text": message + ""
       },
-      "color": 10288426
+      "color": 0x76e8d8
     }
   }).then(msg => {
     if (config[message.guild.id].delete == 'true') {

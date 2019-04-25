@@ -88,7 +88,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
 
 }
 
-async function play(client, ops, data, streamOptions) {
+function play(client, ops, data, streamOptions) {
   
   let playEmbed = new Discord.RichEmbed()
     .setColor(0x76e8d8)
@@ -110,7 +110,7 @@ async function play(client, ops, data, streamOptions) {
 
 }
 
-async function finish(client, ops, dispatcher) {
+function finish(client, ops, dispatcher) {
 
   let fetched = ops.active.get(dispatcher.guildID);
   fetched.queue.shift();

@@ -49,3 +49,6 @@ exports.run = (bot, message, args, ops) => {
       "color": 0x22ff22
     }
   })
+  module.exports.help = {
+    name: "join"
+  }

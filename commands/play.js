@@ -96,7 +96,7 @@ async function play(client, ops, data, streamOptions) {
     .setDescription("Now playing **" + data.queue[0].songTitle + "**"))
   
   client.channels.get(data.queue[0].announceChannel).send(playEmbed)
-  };
+}
 
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
     filter: "audioonly"

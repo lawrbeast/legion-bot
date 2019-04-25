@@ -34,17 +34,8 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
         "title": "Song skipped!",
         "color": 0x22ff22
       }
-    }).then(msg => {
-      if (conf[message.guild.id].delete == 'true') {
-        msg.delete(conf[message.guild.id].deleteTime);
-      }
-    });
-    if (!fetched.queue.length == 0) {
-      return fetched.dispatcher.end();
-    } else {
-      return fetched.dispatcher.end();
-    }
-    ops.active.set(message.guild.id, fetched);
+    })
+    return fetched.dispatcher.emit('finish')
   }
 
   message.channel.send({
@@ -53,10 +44,6 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
       "description": "Left: " + Math.ceil(fetched.queue[0].voteSkips.length / required),
       "color": 0x22ff22
     }
-  }).then(msg => {
-    if (conf[message.guild.id].delete == 'true') {
-      msg.delete(conf[message.guild.id].deleteTime);
-    }
-  });
+  })
 
 }

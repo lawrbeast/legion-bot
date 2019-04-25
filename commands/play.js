@@ -15,7 +15,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
   if (!message.member.voiceChannel) {
     return message.channel.send({
       embed: {
-        "title": "Join voice channel first!",
+        "title": "Întră într-un canal de voice!",
         "color": 0xff2222
       }
     }).then(msg => {
@@ -27,7 +27,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
   if (!song) {
     return message.channel.send({
       embed: {
-        "title": "Input URL or song name!",
+        "title": "Numele melodiei sau URL-ul este greșit!",
         "color": 0xff2222
       }
     }).then(msg => {
@@ -69,8 +69,8 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
   } else {
     let queueE = new Discord.RichEmbed()
        .setColor(0x76e8d8)
-      .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
-      .setDescription("Added to queue **" + info.title + "**")
+      .setAuthor("Autor " + message.author.username, message.author.avatarURL)
+      .setDescription("Am adăugat în listă **" + info.title + "**")
     message.channel.send({embed:queueE})
   }
 
@@ -82,8 +82,8 @@ async function play(client, ops, data, streamOptions) {
 
   let playEmbed = new Discord.RichEmbed()
     .setColor(0x76e8d8)
-    .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
-    .setDescription("Now playing **" + data.queue[0].songTitle + "**")
+    .setAuthor("Autor " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
+    .setDescription("Melodie curentă **" + data.queue[0].songTitle + "**")
   
    client.channels.get(data.queue[0].announceChannel).send({embed:playEmbed})
 

@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
 
   message.channel.send({
     embed: {
-      "description": `**Melodia curentă**\nresponse + queueList`,
+      "description": `**Melodia curentă**\n${response}\n\n${queueList}`,
       "footer": {
         "text": message + ""
       },

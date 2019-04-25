@@ -61,14 +61,14 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     songTitle: info.title,
     requestAuthor: message.author,
     url: song,
-    announceChannel: message.channel.id
+    announceChannel: message.channel
   });
 
   if (!data.dispatcher) {
     play(client, ops, data, streamOptions);
   } else {
     let queueE = new Discord.RichEmbed()
-        .setColor(0x76e8d8)
+       .setColor(0x76e8d8)
       .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
       .setDescription("Added to queue **" + info.title + "**")
     message.channel.send(queueE)

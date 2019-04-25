@@ -11,11 +11,11 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   var userCount = message.member.voiceChannel.members.size;
   var required = Math.ceil(userCount / 2);
 
-  if (!fetched.queue[0].voteSkips) {
-    fetched.queue[0].voteSkips = [];
+  if (!fetched.queue.voteSkips) {
+    fetched.queue.voteSkips = [];
   }
 
-  if (fetched.queue[0].voteSkips.includes(message.member.id)) {
+  if (fetched.queue.voteSkips.includes(message.member.id)) {
     return message.channel.send({
       embed: {
         "title": "Ai votat deja pentru skip!",
@@ -25,10 +25,10 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
     });
   }
 
-  fetched.queue[0].voteSkips.push(message.member.id);
+  fetched.queue.voteSkips.push(message.member.id);
   ops.active.set(message.guild.id, fetched);
 
-  if (fetched.queue[0].voteSkips.length >= required) {
+  if (fetched.queue.voteSkips.length >= required) {
     message.channel.send({
       embed: {
         "title": "Melodia a fost sarită!",

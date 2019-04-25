@@ -26,7 +26,7 @@ client.on("error", e => {
 });
 
 client.on('ready', () => { //Startup
-  
+  client.channels.get('544508026489405441').send(`Online!`)
   
   });
 

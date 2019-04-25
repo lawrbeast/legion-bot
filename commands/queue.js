@@ -12,12 +12,12 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   let queue = fetched.queue;
   let nowPlaying = queue[0];
 
-  let response = "Now playing **" + nowPlaying.songTitle + "**\nSuggested by " + nowPlaying.requestAuthor.username;
+  let response = "**" + nowPlaying.songTitle + "**\nAutor " + nowPlaying.requestAuthor.username;
   let queueList = "";
   if (queue.length == 1) {
     queueList = "";
   } else {
-    queueList = "\n\n**Queue:** \n";
+    queueList = "\n\n**Lista de așteptare:** \n";
   }
 
   for (let i = 1; i < queue.length; i++) {
@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
 
   message.channel.send({
     embed: {
-      "description": response + queueList,
+      "description": `**Melodia curentă**\nresponse + queueList`,
       "footer": {
         "text": message + ""
       },

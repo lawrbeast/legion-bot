@@ -12,10 +12,10 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   var required = Math.ceil(userCount / 2);
 
   if (!fetched.queue.voteSkips) {
-    fetched.queue.voteSkips = [];
+    fetched.queue[0].voteSkips = [];
   }
 
-  if (fetched.queue.voteSkips.includes(message.member.id)) {
+  if (fetched.queue[0].voteSkips.includes(message.member.id)) {
     return message.channel.send({
       embed: {
         "title": "Ai votat deja pentru skip!",
@@ -25,10 +25,9 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
     });
   }
 
-  fetched.queue.voteSkips.push(message.member.id);
-  ops.active.set(message.guild.id, fetched);
-
-  if (fetched.queue.voteSkips.length >= required) {
+  if (fetched.queue[0].voteSkips.length >= required) {
+      fetched.queue[0].voteSkips.push(message.member.id);
+      ops.active.set(message.guild.id, fetched);
     message.channel.send({
       embed: {
         "title": "Melodia a fost sarită!",
@@ -39,7 +38,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
         msg.delete(conf[message.guild.id].deleteTime);
       }
     });
-    if (!fetched.queue.length == 0) {
+    if (!fetched.queue[0].length == 0) {
       return fetched.dispatcher.emit('finish');
     } else {
       return fetched.dispatcher.end();

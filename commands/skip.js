@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   }
 
   fetched.queue[0].voteSkips.push(message.member.id);
-  ops.active.set(message.guild.id, fetched.queue[0]);
+  ops.active.set(message.guild.id, fetched);
 
   if (fetched.queue[0].voteSkips.length >= required) {
     message.channel.send({
@@ -40,7 +40,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
       }
     });
     if (!fetched.queue.length == 0) {
-      return fetched.dispatcher.emit('finish');
+      return fetched.dispatcher.end();
     } else {
       return fetched.dispatcher.end();
     }

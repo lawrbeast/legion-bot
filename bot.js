@@ -3,7 +3,6 @@ const Discord = require('discord.js'); //Discord library
 const client = new Discord.Client({
   forceFetchUsers: true
 });
-const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDQyNDQ4MTQ0NjEwMTAyMiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ2NzE5NTcyfQ.LhqkfRCksuyJzDwCpKjVw_Rei011JhGjC0V8C7Yv-Mg', client);
 const fs = require('fs'); //FileSystem
 try {
     var config = JSON.parse(fs.readFileSync("./config.json", "utf8")); //Overwrite prefix (important for changing prefix)
@@ -32,8 +31,6 @@ client.on('ready', () => { //Startup
   });
 
 client.on('guildCreate', guild => { // If the Bot was added on a server, proceed
-  
-  const chan = client.channels.get("471603875749691393");
   
   config[guild.id] = {
     prefix: '!d ',

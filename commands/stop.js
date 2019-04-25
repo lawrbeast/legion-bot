@@ -34,16 +34,8 @@ exports.run = (client, message, args, ops) => {
   });
 
   fetched.dispatcher.end();
-  message.channel.send({
-    embed: {
-      "description": "Critical stop!",
-      "color": 0x5921ff
-    }
-  }).then(msg => {
-    if (conf[message.guild.id].delete == 'true') {
-      msg.delete(conf[message.guild.id].deleteTime);
-    }
-  });
+  let likeemo = client.emojis.get('571107823711289376')
+  message.author.react(likeemo)
 
   let vc = client.guilds.get(fetched.dispatcher.guildID).me.voiceChannel;
   if (vc) {

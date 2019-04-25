@@ -33,8 +33,8 @@ client.on('ready', () => { //Startup
 client.on('guildCreate', guild => { // If the Bot was added on a server, proceed
   
   config[guild.id] = {
-    prefix: '!d ',
-    delete: 'true',
+    prefix: '!',
+    delete: 'false',
     deleteTime: 10000,
     volume: 100,
     maxVolume: 200,
@@ -61,8 +61,8 @@ client.on('message', async message => { //If recieves message
     config = JSON.parse(fs.readFileSync("./config.json", "utf8")); //Overwrite prefix (important for changing prefix)
   } catch(ex){
     config[message.guild.id] = {
-      prefix: '!d ',
-      delete: 'true',
+      prefix: '!',
+      delete: 'false',
       deleteTime: 10000,
       volume: 100,
       maxVolume: 200,
@@ -76,8 +76,8 @@ client.on('message', async message => { //If recieves message
   
   if (config[message.guild.id] == undefined) {
     config[message.guild.id] = {
-      prefix: '!d ',
-      delete: 'true',
+      prefix: '!',
+      delete: 'false',
       deleteTime: 10000,
       volume: 100,
       maxVolume: 200,

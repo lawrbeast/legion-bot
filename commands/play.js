@@ -25,7 +25,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     return message.channel.send({
       embed: {
         "title": "Join voice channel first!",
-        "color": 0xff2222
+        "color": 0x76e8d8
       }
     }).then(msg => {
       if (config[message.guild.id].delete == 'true') {
@@ -37,7 +37,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     return message.channel.send({
       embed: {
         "title": "Input URL or song name!",
-        "color": 0xff2222
+        "color": 0x76e8d8
       }
     }).then(msg => {
       if (config[message.guild.id].delete == 'true') {
@@ -93,7 +93,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
 async function play(client, ops, data, streamOptions) {
 
   client.channels.get(data.queue[0].announceChannel).send(new Discord.RichEmbed()
-    .setColor(0x0ea5d3)
+    .setColor(0x76e8d8)
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
     .setDescription("Now playing **" + data.queue[0].songTitle + "**")).then(msg => {
     if (config[data.guildID].delete == 'true') {

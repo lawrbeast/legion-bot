@@ -12,7 +12,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   let queue = fetched.queue;
   let nowPlaying = queue[0];
 
-  let response = "**" + nowPlaying.songTitle + "**\nAutor " + nowPlaying.requestAuthor.username;
+  let response = "**" + nowPlaying.songTitle + "**\nAutor: " + nowPlaying.requestAuthor.username;
   let queueList = "";
   if (queue.length == 1) {
     queueList = "";
@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
 
   message.channel.send({
     embed: {
-      "description": `**Melodia curentă**\n${response}\n\n${queueList}`,
+      "description": `**Melodia curentă:**\n${response}\n\n${queueList}`,
       "footer": {
         "text": message + ""
       },

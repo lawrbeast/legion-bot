@@ -76,7 +76,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
   let queueEmbed = new Discord.RichEmbed()
       .setColor(0x0ea5d3)
       .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
-      .setDescription("Added to queue **" + info.title + "**"))
+      .setDescription("Added to queue **" + info.title + "**")
   if (!data.dispatcher) {
     play(client, ops, data, streamOptions);
   } else {
@@ -93,7 +93,7 @@ async function play(client, ops, data, streamOptions) {
   let playEmbed = new Discord.RichEmbed()
     .setColor(0x76e8d8)
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
-    .setDescription("Now playing **" + data.queue[0].songTitle + "**"))
+    .setDescription("Now playing **" + data.queue[0].songTitle + "**")
   
   client.channels.get(data.queue[0].announceChannel).send(playEmbed)
 }

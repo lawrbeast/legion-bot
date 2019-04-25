@@ -25,7 +25,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     return message.channel.send({
       embed: {
         "title": "Join voice channel first!",
-        "color": 0x76e8d8
+        "color": 0xff2222
       }
     }).then(msg => {
       if (config[message.guild.id].delete == 'true') {
@@ -37,7 +37,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     return message.channel.send({
       embed: {
         "title": "Input URL or song name!",
-        "color": 0x76e8d8
+        "color": 0xff2222
       }
     }).then(msg => {
       if (config[message.guild.id].delete == 'true') {
@@ -73,30 +73,28 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     announceChannel: message.channel.id
   });
 
-  let queueEmbed = new Discord.RichEmbed()
-      .setColor(0x0ea5d3)
-      .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
-      .setDescription("Added to queue **" + info.title + "**")
   if (!data.dispatcher) {
     play(client, ops, data, streamOptions);
   } else {
-    message.channel.send(queueEmbed)
-    };
+    let queueE = new Discord.RichEmbed()
+        .setColor(0x76e8d8)
+      .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
+      .setDescription("Added to queue **" + info.title + "**")
+    message.channel.send(queueE)
   }
 
   ops.active.set(message.guild.id, data);
 
 }
 
-function play(client, ops, data, streamOptions) {
-  
+async function play(client, ops, data, streamOptions) {
+
   let playEmbed = new Discord.RichEmbed()
     .setColor(0x76e8d8)
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
     .setDescription("Now playing **" + data.queue[0].songTitle + "**")
   
   client.channels.get(data.queue[0].announceChannel).send(playEmbed)
-}
 
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
     filter: "audioonly"
@@ -110,7 +108,7 @@ function play(client, ops, data, streamOptions) {
 
 }
 
-function finish(client, ops, dispatcher) {
+async function finish(client, ops, dispatcher) {
 
   let fetched = ops.active.get(dispatcher.guildID);
   fetched.queue.shift();

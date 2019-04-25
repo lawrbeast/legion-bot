@@ -35,7 +35,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
         "color": 0x22ff22
       }
     })
-    return fetched.dispatcher.emit('finish')
+    return fetched.dispatcher.end();
   }
 
   message.channel.send({

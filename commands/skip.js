@@ -26,7 +26,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   }
 
   fetched.queue[0].voteSkips.push(message.member.id);
-  ops.active.set(message.guild.id, fetched);
+  ops.active.set(message.guild.id, fetched.queue[0]);
 
   if (fetched.queue[0].voteSkips.length >= required) {
     message.channel.send({

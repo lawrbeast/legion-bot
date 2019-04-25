@@ -73,17 +73,15 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     announceChannel: message.channel.id
   });
 
+  let queueEmbed = new Discord.RichEmbed()
+      .setColor(0x0ea5d3)
+      .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
+      .setDescription("Added to queue **" + info.title + "**"))
   if (!data.dispatcher) {
     play(client, ops, data, streamOptions);
   } else {
-    message.channel.send(new Discord.RichEmbed()
-      .setColor(0x0ea5d3)
-      .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
-      .setDescription("Added to queue **" + info.title + "**")).then(msg => {
-      if (config[message.guild.id].delete == 'true') {
-        msg.delete(config[message.guild.id].deleteTime);
-      }
-    });
+    message.channel.send(queueEmbed)
+    };
   }
 
   ops.active.set(message.guild.id, data);
@@ -91,15 +89,14 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
 }
 
 async function play(client, ops, data, streamOptions) {
-
-  client.channels.get(data.queue[0].announceChannel).send(new Discord.RichEmbed()
+  
+  let playEmbed = new Discord.RichEmbed()
     .setColor(0x76e8d8)
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
-    .setDescription("Now playing **" + data.queue[0].songTitle + "**")).then(msg => {
-    if (config[data.guildID].delete == 'true') {
-      msg.delete(config[data.guildID].deleteTime);
-    }
-  });
+    .setDescription("Now playing **" + data.queue[0].songTitle + "**"))
+  
+  client.channels.get(data.queue[0].announceChannel).send(playEmbed)
+  };
 
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
     filter: "audioonly"

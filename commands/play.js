@@ -61,7 +61,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
     songTitle: info.title,
     requestAuthor: message.author,
     url: song,
-    announceChannel: message.channel
+    announceChannel: message.channel.id
   });
 
   if (!data.dispatcher) {
@@ -71,7 +71,7 @@ exports.run = async (client, message, args, ops) => { //Collecting info about co
        .setColor(0x76e8d8)
       .setAuthor("Suggested by " + message.author.username, message.author.avatarURL)
       .setDescription("Added to queue **" + info.title + "**")
-    message.channel.send(queueE)
+    message.channel.send({embed:queueE})
   }
 
   ops.active.set(message.guild.id, data);
@@ -85,7 +85,7 @@ async function play(client, ops, data, streamOptions) {
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
     .setDescription("Now playing **" + data.queue[0].songTitle + "**")
   
-   client.channels.get(data.queue[0].announceChannel).send(playEmbed)
+   client.channels.get(data.queue[0].announceChannel).send({embed: playEmbed})
 
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
     filter: "audioonly"

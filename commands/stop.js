@@ -35,7 +35,7 @@ exports.run = (client, message, args, ops) => {
 
   fetched.dispatcher.end();
   let likeemo = client.emojis.get('571107823711289376')
-  message.author.react(likeemo)
+  message.channel.send(likeemo)
 
   let vc = client.guilds.get(fetched.dispatcher.guildID).me.voiceChannel;
   if (vc) {

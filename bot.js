@@ -1,178 +1,159 @@
-const Discord = require('discord.js');
-const moment = require('moment');
-require("moment-duration-format");
-const ms = require("ms");
-const gifSearch = require("gif-search");
-const bot = new Discord.Client();
-const fs = require("fs");
-bot.commands = new Discord.Collection();
+const Discord = require('discord.js'); //Discord library
+//Creating bot
+const client = new Discord.Client({
+  forceFetchUsers: true
+});
+const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUzMDQyNDQ4MTQ0NjEwMTAyMiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ2NzE5NTcyfQ.LhqkfRCksuyJzDwCpKjVw_Rei011JhGjC0V8C7Yv-Mg', client);
+const fs = require('fs'); //FileSystem
+try {
+    var config = JSON.parse(fs.readFileSync("./config.json", "utf8")); //Overwrite prefix (important for changing prefix)
+  } catch(ex){
+    console.log("[ERROR] Config overwrited");
+    var config = {}
+    fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  }
 const active = new Map();
-fs.readdir("./commands", (err, files) => {
 
-    if(err) console.log(err)
+const serverStats = {
+  guildID: '471591472311828480',
+  totalUsersID: '471602694436683786',
+  memberCountID: '471602835495190528',
+  botCountID: '471602889974874113'
+}
+var ownerId = '257491128671141888';
 
-    let jsfile = files.filter(f => f.split(".").pop() === "js")
-    if(jsfile.length <= 0){
-        console.log("Nu ai creat folder-ul commands!");
-        return;
-    }
-
-    jsfile.forEach((f, i) => {
-        let props = require(`./commands/${f}`)
-        console.log(`${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-    });
-
+client.on("error", e => {
+  console.log("[ERROR] " + e);
 });
-//
-bot.on("ready", async () => {
-    console.log(`Legion Guard este online`);
-    bot.user.setPresence({ game: { name: `Prefix: $help`, url: 'https://twitch.tv/qlau234', type: 1 } });
-});
-bot.on("message", message => {
-  if(message.channel.type === "dm") return
-	
-//MESAJE FARA PREFIX
-	if(message.content === "aolo gucci" | "aolo guci"){
-		message.channel.send("https://youtu.be/W6wTdLzYFSc")
-	}
-	
-	if(message.content === "ce faci nuca?"){
-		message.channel.send("Nuca face contrabanda de supt pula!")
-	}
-	
-	if(message.content === "va place?"){
-		message.channel.send("arata bn")
-	}
-	
-	if(message.content === "anime"){
-		message.channel.send(`Să vă iau anime-urile în pulă de weebs infecți, mai ales tu ${message.author}\n👉 :airplane:`).then(msg => {msg.delete(5000)});
-	}
-	
-//
 
-    const prefix = "$";
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let sender = message.author;
-    let args = messageArray.slice(1);
-	
-    if(!message.content.startsWith(prefix)) return;
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if(commandfile) commandfile.run(bot, message, args);
-    if(!message.content.startsWith(`${prefix}`)) return
-	//COMMANDS
-if(cmd === `${prefix}avatar`){
-    let user = message.mentions.users.first() || message.author;
-    const embed = new Discord.RichEmbed()
-        .setColor(0xffffff) // This will set the embed sidebar color
-        .setImage(user.avatarURL) // This will set the embed image     
-    message.channel.send({embed});
-        return;
-    }
-   //
-  if(cmd === `${prefix}userinfo`){
-	let user;
-	// If the user mentions someone, display their stats. If they just run userinfo without mentions, it will show their own stats.
-    if (message.mentions.users.first()) {
-      user = message.mentions.users.first();
-    } else {
-        user = message.author;
-    }
-	// Define the member of a guild.
-    const member = message.guild.member(user);
-
-	//Discord rich embed
-    const embed = new Discord.RichEmbed()
-		.setColor('RANDOM')
-		.setThumbnail(user.avatarURL)
-		.setTitle(`${user.username}#${user.discriminator}`)
-		.addField("ID:", `${user.id}`, true)
-		.addField("Nickname:", `${member.nickname !== null ? `${member.nickname}` : 'None'}`, true)
-		.addField("Creat pe", `${moment.utc(user.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
-		.addField("A intrat pe server:", `${moment.utc(member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`, true)
-		.addField("Bot:", `${user.bot}`, true)
-		.addField("Status:", `${user.presence.status}`, true)
-		.addField("Joc:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-		.addField("Roluri:", member.roles.map(roles => `${roles.name}`).join(', '), true)
-		.setFooter(`Cerut de ${message.author.username}#${message.author.discriminator}`)
-     message.channel.send({embed});
-	  return;
-    }
-	//HEP
-	if(cmd === `${prefix}help`){
-		let embed = new Discord.RichEmbed()
-		.setColor("#fcfdff")
-		.setTitle("Death's Commands")
-		.setThumbnail('https://cdn.discordapp.com/attachments/456900268739657741/457252834228961280/Deathicon.png')
-		.setDescription("**Fun**:dancer:\n$roll - arunca zarul iar $roll duel @user - dueleaza-te cu cineva prin zaruri!\n$meme - Iti arata un meme random.\n$roll - arunca un zar\n$emojify - transforma un text in emoji\n$gif - iti arata o imagine GIF random\n$avatar <@user> - iti arata avatarul tau sau al unui user\n\n**Moderare**:tools:\n$userinfo <@user> - iti arata informatiile unui user\n$serverinfo - iti arata informatiile server-ului\n$kick [@user] - dai kick unui user")
-		.setFooter("Dacă ai găsit vreun, folosește $reportbug <bug>.")
-		message.author.send({embed}).then(msg => {message.channel.send('Ti-am trimis comenzile in DM!')});
-		return;
-	}
-	//SERVERINFO
-if(cmd === `${prefix}serverinfo`){
-   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
-   let day = message.guild.createdAt.getDate()
-   let month = 1 + message.guild.createdAt.getMonth()
-   let year = message.guild.createdAt.getFullYear()
-   let sicon = message.guild.iconURL;
-   let guild = message.guild
-   let embed = new Discord.RichEmbed()
-   .setAuthor(message.guild.name, sicon)
-   .setFooter(`Creat pe • ${day}.${month}.${year}`)
-   .setColor("#7289DA")
-   .setThumbnail(sicon)
-   .addField("ID", message.guild.id, true)
-   .addField("Nume", message.guild.name, true)
-   .addField("Deținător", message.guild.owner.user.tag, true)
-   .addField("Regiune", message.guild.region, true)
-   .addField("Canale", message.guild.channels.size, true)
-   .addField("Membrii", message.guild.memberCount, true)
-   .addField("Oameni", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("Boți", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("Online", online.size, true)
-   .addField("Roluri:", guild.roles.map(roles => `${roles.name}`).join(', '), true)
-   message.channel.send({embed});
-return;
-}
-	//BOT STATS
-if(cmd === `${prefix}botstats`){
-	const duration = moment.duration(bot.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-  const embed = new Discord.RichEmbed()
-    .setTitle("*** Stats ***")
-    .setColor("RANDOM")
-    .addField("• Uptime ", `${duration}`, true)
-    .addField("• Users", `${bot.users.size.toLocaleString()}`, true)
-    .addField("• Servers", `${bot.guilds.size.toLocaleString()}`, true)
-    .addField("• Channels ", `${bot.channels.size.toLocaleString()}`, true)
-    message.channel.send({embed})
-	return;
-}
-	//ANTI INVITE LINK
-	let msg = message.content.toUpperCase();
-	if(message.member.hasPermission("ADMINISTRATOR")) return;
-if (msg.includes(`DISCORD.GG`)){
-		message.channel.send("**Fără invite link-uri!**");
-		message.delete();
-		return
-	}
-if (msg.includes(`ANIME`)){
-		message.channel.send(`Să vă iau anime-urile în pulă de weebs infecți, mai ales tu ${message.author}\n👉 :airplane:`).then(msg => {msg.delete(5000)});
-		return;
-	}
-	//GIF
-if(cmd === `${prefix}gif`){
-	gifSearch.random(args[0]).then(
-        gifUrl => {
-
-        let randomcolor = ((1 << 24) * Math.random() | 0).toString(16) //Optional
-        var embed = new Discord.RichEmbed()
-            .setColor(`#${randomcolor}`)
-            .setImage(gifUrl)
-        message.author.send(embed);
-    });
-}
-  });
+client.on('ready', () => { //Startup
   
-bot.login(process.env.BOT_TOKEN);
+  
+  });
+
+client.on('guildCreate', guild => { // If the Bot was added on a server, proceed
+  
+  const chan = client.channels.get("471603875749691393");
+  
+  config[guild.id] = {
+    prefix: '!d ',
+    delete: 'true',
+    deleteTime: 10000,
+    volume: 100,
+    maxVolume: 200,
+    djonly: false,
+    djroles: [],
+    levelup: true
+  }
+  fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  });
+  /* Welcome message */
+client.on('guildDelete', guild => { // If the Bot was added on a server, proceed
+  client.user.setPresence({ game: { name: `!d join :)`, url: 'https://twitch.tv/qlau234', type: 1 } });
+
+});
+
+/* ON MESSAGE */
+client.on('message', async message => { //If recieves message
+   if (message.author.bot) return;
+  let infoemote = client.emojis.get('567470814275043368')
+//DB's
+//DB's
+  
+  try {
+    config = JSON.parse(fs.readFileSync("./config.json", "utf8")); //Overwrite prefix (important for changing prefix)
+  } catch(ex){
+    config[message.guild.id] = {
+      prefix: '!d ',
+      delete: 'true',
+      deleteTime: 10000,
+      volume: 100,
+      maxVolume: 200,
+      djonly: false,
+      djroles: [],
+      levelup: true
+    }
+    fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  }
+  
+  
+  if (config[message.guild.id] == undefined) {
+    config[message.guild.id] = {
+      prefix: '!d ',
+      delete: 'true',
+      deleteTime: 10000,
+      volume: 100,
+      maxVolume: 200,
+      djonly: false,
+      djroles: [],
+      levelup: true
+    }
+    fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  }
+
+  //END OF POINT SYSTEM
+  
+  
+  //
+
+  var prefix = config[message.guild.id].prefix;
+  
+  let args = message.content.slice(prefix.length).trim().split(' '); //Setting-up arguments of command
+  let cmd = args.shift().toLowerCase(); //LowerCase command
+  //SLOWMODE
+  // if (message.content === "master reset-prefix") {
+  //   config[message.guild.id].prefix = '$';
+  //   fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  //   message.channel.send({ embed: {"title": "Prefix - master", "color": 0x22ff22} });
+  //   return;
+  // }
+
+  if (!message.content.startsWith(prefix)) return; //If no prefix
+  //Command handler
+  try {
+    
+    if (config[message.guild.id].delete == 'true') {
+      message.delete(config[message.guild.id].deleteTime).catch(function(e) {console.log("[WARN] Can't delete message - " + e);});
+    }
+    
+    let ops = { 
+      ownerId: ownerId,
+      active: active
+    }
+
+    let commandFile = require(`./commands/${cmd}.js`); //Require command from folder
+    commandFile.run(client, message, args, ops); //Pass four args into 'command'.js and run it
+
+  } catch (e) { //Catch errors 
+    if (!message.content === "#!reset-prefix") {
+      message.channel.send({
+        embed: {
+          "color": 0xff2222,
+          "fields": [{
+            "name": "**Error**",
+            "value": "Something went wrong \n" + e
+          }]
+        }
+      }).then(msg => {
+        if (config[message.guild.id].delete == 'true') {
+          msg.delete(config[message.guild.id].deleteTime).catch(function(e) {console.log("[WARN] Can't delete message - " + e);});
+        }
+      });
+    }
+  }
+  
+  
+  //IN-COMMANDS
+});
+
+client.on('guildMemberAdd', member => {
+  
+});
+
+client.on('guildMemberRemove', member => {
+  
+});
+
+//Connecting bot
+client.login('NTcxMDM0MjQwOTgxMDA4Mzk0.XMH3Gg.Ufb07sX7RAtKaXprW2E9FM0Tyls
+');

@@ -94,7 +94,7 @@ async function play(client, ops, data, streamOptions) {
     .setAuthor("Suggested by " + data.queue[0].requestAuthor.username, data.queue[0].requestAuthor.avatarURL)
     .setDescription("Now playing **" + data.queue[0].songTitle + "**")
   
-   message.channel.send(playEmbed)
+   client.channel.send(playEmbed)
 
   data.dispatcher = await data.connection.playStream(ytdl(data.queue[0].url, {
     filter: "audioonly"

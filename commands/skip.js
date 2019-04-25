@@ -20,24 +20,14 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
       embed: {
         "title": "Ai votat deja pentru skip!",
         "description": "Ce a rămas: " + fetched.queue[0].voteSkips.length / required,
-        "color": 0xff2222
+        "color": 0x76e8d8
       }
     });
   }
 
-  if (fetched.queue[0].voteSkips.length >= required) {
       fetched.queue[0].voteSkips.push(message.member.id);
       ops.active.set(message.guild.id, fetched);
-    message.channel.send({
-      embed: {
-        "title": "Melodia a fost sarită!",
-        "color": 0x22ff22
-      }
-    }).then(msg => {
-      if (conf[message.guild.id].delete == 'true') {
-        msg.delete(conf[message.guild.id].deleteTime);
-      }
-    });
+  
     if (!fetched.queue[0].length == 0) {
       return fetched.dispatcher.emit('finish');
     } else {
@@ -50,12 +40,8 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
     embed: {
       "title": "A fost votat!",
       "description": "Ce a rămas: " + Math.ceil(fetched.queue[0].voteSkips.length / required),
-      "color": 0x22ff22
+      "color": 0x76e8d8
     }
-  }).then(msg => {
-    if (conf[message.guild.id].delete == 'true') {
-      msg.delete(conf[message.guild.id].deleteTime);
-    }
-  });
+  })
 
 }

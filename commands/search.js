@@ -23,7 +23,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
     if (videos.length == 0) return message.channel.send({
       embed: {
         "title": "Can't find a song by your request!",
-        "color": 0xff2222
+        "color": 0x76e8d8
       }
     }).then(msg => {
       if (config[message.guild.id].delete == 'true') {
@@ -34,7 +34,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
       response += `**${parseInt(i)+1}.** \`${videos[i].title}\`\n`;
     }
 
-    var title = `*Choose number between 1 and ${videos.length}*`;
+    var title = `*Alege o melodie dintre 1 si ${videos.length}*`;
 
     const filter = m => !isNaN(m.content) && m.content <= videos.length && m.content > 0;
     const collector = message.channel.createMessageCollector(filter);

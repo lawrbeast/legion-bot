@@ -155,5 +155,4 @@ client.on('guildMemberRemove', member => {
 });
 
 //Connecting bot
-client.login('NTcxMDM0MjQwOTgxMDA4Mzk0.XMH3Gg.Ufb07sX7RAtKaXprW2E9FM0Tyls
-');
+client.login('NTcxMDM0MjQwOTgxMDA4Mzk0.XMH3Gg.Ufb07sX7RAtKaXprW2E9FM0Tyls');

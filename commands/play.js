@@ -115,5 +115,10 @@ async function finish(client, ops, dispatcher) {
       vc.leave();
     }
   }
+  if(args[0] === 'skip'){
+    fetched.queue.shift();
+    ops.active.set(dispatcher.guildID, fetched);
+    play(client, ops, fetched);
+  }
 
 }

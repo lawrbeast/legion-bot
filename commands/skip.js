@@ -9,7 +9,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   if (message.member.voiceChannel !== message.guild.me.voiceChannel) return message.channel.send("Ты должен быть в одном канале с ботом!");
 
   var userCount = message.member.voiceChannel.members.size;
-  var required = Math.ceil(userCount / 1);
+  var required = Math.ceil(userCount / 0);
 
   if (!fetched.queue[0].voteSkips) {
     fetched.queue[0].voteSkips = [];

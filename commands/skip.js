@@ -20,7 +20,7 @@ exports.run = (client, message, args, ops) => { //Collecting info about command
   
   if(fetched.queue[0].voteSkips.length >= required){
     message.channel.send(`Song skipped!`)
-    return fetched.dispatcher.emit('play');
+    return fetched.dispatcher.end();
   }
   message.channel.send(`Vote added!`)
 }
